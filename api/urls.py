@@ -4,6 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', DeviceView.as_view()),
-#    path('api/', views.DeviceView.as_view(), name='api_view')
+    path('', DeviceView.as_view()),     # path('api/', views.DeviceView.as_view(), name='api_view')
 ]

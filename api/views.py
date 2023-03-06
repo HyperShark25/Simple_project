@@ -10,18 +10,19 @@ from rest_framework.authentication import authenticate
 
 
 class DeviceView(APIView):
-    # http_method_names = [""]
+    # allowed_methods = 'list'
+    # http_method_names = ['get']
     # queryset = Device.objects.all()
     # serializer_class = DeviceSerializer
 
     def get(self, request, *args, **kwargs):
         item = Device.objects.all()
-        serializer = DeviceSerializer(item, many=True, context={'request': request})
+        serializer = DeviceSerializer(item, many=True)
         return Response(serializer.data)
-
-    def post(self, request, *args, **kwargs):
-        serializer = DeviceSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors)
+    #
+    # def post(self, request, *args, **kwargs):
+    #     serializer = DeviceSerializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors)

@@ -1,3 +1,19 @@
 View sets like ModelViewSet and others take http methoda like list create update and so on...
 
 APIView take http methods like get post and so on...
+
+
+When connecting with postgresql.
+when we go to settings.py file and go to DATABASES:
+We type     'ENGINE': 'django.db.backends.postgresql',      instead of 'django.db.backends.sqlite3'
+        'NAME': 'Beta',         Name refers to name of database
+        'USER': 'postgres',     refers to the file that is directly under the database file name we did in the
+                                last step.
+        'PASSWORD': 'dragonballz',      refers to the password we did in the very first time(not the master
+                                        password)
+        'HOST': 'localhost',        default host
+        'PORT': '5432'      default port
+
+In order to deal with the password we need to click on the server we created(PostgreSQL 14) and then
+select object and then select change password.
+    [ This will change the Password that is needed in settings.py file ]
