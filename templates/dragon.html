@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<h1 class="title">
+    Number One
+</h1>
+<style>
+    .title {
+    text-align:center;
+    }
+</style>
 <body>
-{% for item in x %}
-<h1>{{item.user}}</h1>
-{% endfor %}
+{% for item in a %}
+<a style="text-decoration:none; color: red" href="/dragon/{{item.id}}">
+    <h1>
+        {{item.title}}
+    </h1>
+</a>
+<h3>
+    Last updated in {{item.date_created}}
+</h3>
+<a style="text-decoration:none; color: blue" href="/dragon/{{item.id}}">
+    <input type="submit">
+    {% endfor %}
+</a>
 </body>
-</html>

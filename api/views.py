@@ -14,15 +14,26 @@ class DeviceView(APIView):
     # http_method_names = ['get']
     # queryset = Device.objects.all()
     # serializer_class = DeviceSerializer
+    permission_classes = (IsAuthenticated, )
 
     def get(self, request, *args, **kwargs):
         item = Device.objects.all()
         serializer = DeviceSerializer(item, many=True)
         return Response(serializer.data)
-    #
-    # def post(self, request, *args, **kwargs):
-    #     serializer = DeviceSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors)
+
+    def post(self, request, *args, **kwargs):
+        serializer = DeviceSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+
+def second(request, pk):
+    a = Device.objects.get(id=pk)
+    return render(request, 'second.html', {'a': a})
+
+
+def dragon(request):
+    a = Device.objects.all()
+    return render(request, 'dragon.html', {'a': a})
