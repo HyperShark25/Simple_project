@@ -17,3 +17,56 @@ We type     'ENGINE': 'django.db.backends.postgresql',      instead of 'django.d
 In order to deal with the password we need to click on the server we created(PostgreSQL 14) and then
 select object and then select change password.
     [ This will change the Password that is needed in settings.py file ]
+
+# def get_absolute_url(self):
+#     """Returns the URL to access a particular instance of the model."""
+#     return reverse('dragon')
+
+
+#     return reverse('model-detail-view', args=[str(self.id)])
+# Note: Assuming you will use URLs like /myapplication/mymodelname/2 to display individual records for your
+# model (where "2" is the id for a particular record), you will need to create a URL mapper to pass the
+# response and id to a "model detail view" (which will do the work required to display the record). The reverse
+# () function above is able to "reverse" your URL mapper (in the above case named 'model-detail-view') in order
+# to create a URL of the right format.
+
+# Of course to make this work you still have to write the URL mapping, view, and template!
+
+# You can also define any other methods you like, and call them from your code or templates (provided that they
+# don't take any parameters).
+
+
+
+
+# from rest_framework.viewsets import ModelViewSet
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework import authentication, permissions
+
+
+class DeviceView(APIView):
+    # allowed_methods = 'list'
+    # http_method_names = ['get']
+    # queryset = Device.objects.all()
+    # serializer_class = DeviceSerializer
+    # permission_classes = (IsAuthenticated, )
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Beta',
+#         'USER': 'postgres',
+#         'PASSWORD': 'dragonballz',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication'
+#     ]
+# }

@@ -1,16 +1,21 @@
+{% if user.is_authenticated %}
 <h1 class="title">
-    Number One
+    Welcome {{user.username}}
 </h1>
+<h4>{{user.email}}</h4>
 <style>
     .title {
     text-align:center;
     }
 </style>
 <body>
+<li><a class="getstarted scrollto" href="dragon/logout">
+    <button> Log Out</button>
+</a></li>
 {% for item in a %}
 <a style="text-decoration:none; color: red" href="/dragon/{{item.id}}">
     <h1>
-        {{item.title}}
+        {{item.user}}
     </h1>
 </a>
 <h3>
@@ -21,3 +26,14 @@
     {% endfor %}
 </a>
 </body>
+{% else %}
+<h1>If you haven't logged in yet <br>
+    You can Log in now</h1>
+<li><a class="getstarted scrollto" href="dragon/login">
+    <button>Log IN</button>
+</a></li>
+<h2> or you canRegister</h2>
+<li><a class="getstarted scrollto" href="dragon/register">
+    <button>Register</button>
+</a></li>
+{% endif %}
