@@ -1,4 +1,10 @@
-{% for a in item %}
-<h1>Hello and Welcome 😊</h1>
-<h1>You have been here for {{a.duration}}</h1>
-{% endfor %}
+<div class="container">
+    <form method="POST">
+      <fieldset>
+        <legend><h1>Form</h1></legend>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+</div>

@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from .serializers import DeviceSerializer
-from .models import Device, New
+from .models import Device, New, LOD
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authentication import authenticate
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from .forms import DeviceForm
 
 
 class DeviceView(APIView):
@@ -32,6 +33,11 @@ def second(request, pk):
 def dragon(request):
     a = Device.objects.all()
     return render(request, 'dragon.html', {'a': a})
+
+
+def like(request):
+    item = LOD.objects.all()
+    return render(request, 'lod.html', {'item': item})
 
 
 def register(request):
@@ -82,7 +88,24 @@ def logout(request):
     return redirect('dragon')
 
 
-class MainViewClass(ListView):
-    template_name = 'hello.html'
-    model = New
-    context_object_name = 'item'
+# class MainViewClass(ListView):
+#     template_name = 'hello.html'
+#     model = New
+#     context_object_name = 'item'
+
+
+# def deviceform(request):
+#     context = {}
+#     context['form'] = DeviceForm()
+#     return render(request, 'hello.html', context)
+
+
+def myform(request):
+    if request.method == 'POST':
+        form = DeviceForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('hello')
+    else:
+        form = DeviceForm()
+    return render(request, 'hello.html', {'form': form})
